@@ -13,7 +13,7 @@ public class WorkingAspect {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(WorkingAspect.class);
 
-    @Pointcut("within(org.springbatch.aop.sample.config.steps..*)")
+    @Pointcut("execution(* org.springbatch.aop.sample.config.steps..sampleStepReader())")
     private void beanInstanciationAnnotated(){ }
 
     @Around("beanInstanciationAnnotated()")

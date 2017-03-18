@@ -1,0 +1,5 @@
+spring.application.name: sof-springbatch-aop-issue
+
+logging.level:
+  root: WARN
+
