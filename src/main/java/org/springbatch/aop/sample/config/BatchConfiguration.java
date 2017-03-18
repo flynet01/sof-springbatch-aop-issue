@@ -17,16 +17,32 @@ import org.springframework.context.annotation.Configuration;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-    public final static String JOB_NAME = "c";
+    public final static String JOB_NAME = "sampleJob";
 
     @Bean(name=JOB_NAME)
-    public Job importEndJob(JobBuilderFactory jobs
-            , @Qualifier("sampleTaskletStep") Step sampleTaskletStep
-            , @Qualifier("sampleStep") Step sampleStep){
+    public Job sampleJob(JobBuilderFactory jobs
+            , @Qualifier("sampleTaskletStep") Step sampleTaskletStep){
         return jobs.get(JOB_NAME)
                 .incrementer(new RunIdIncrementer())
                 .start(sampleTaskletStep)
-                .next(sampleStep)
+                .build();
+    }
+
+    @Bean(name=JOB_NAME + "Bis")
+    public Job sampleJobBis(JobBuilderFactory jobs
+            , @Qualifier("sampleWorkingStep") Step sampleWorkingStep){
+        return jobs.get(JOB_NAME + "Bis")
+                .incrementer(new RunIdIncrementer())
+                .start(sampleWorkingStep)
+                .build();
+    }
+
+    @Bean(name=JOB_NAME + "Ter")
+    public Job sampleJobTer(JobBuilderFactory jobs
+            , @Qualifier("sampleIssueStep") Step sampleIssueStep){
+        return jobs.get(JOB_NAME + "Ter")
+                .incrementer(new RunIdIncrementer())
+                .start(sampleIssueStep)
                 .build();
     }
 

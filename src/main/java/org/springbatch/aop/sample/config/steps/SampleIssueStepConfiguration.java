@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class SampleStepConfiguration {
+public class SampleIssueStepConfiguration {
 
-    public final static String STEP_NAME = "sampleStep";
+    public final static String STEP_NAME = "sampleIssueStep";
 
     @Bean(name=STEP_NAME)
     @JobScope
